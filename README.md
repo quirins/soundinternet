@@ -4,9 +4,9 @@ This document aims to provide a go-to collection of best practices, tips and tri
 
 There is a body of highly recommended related work: 
 
-- The PAM'17 keynote by Matthew Roughan on the "10 commandments of Internet measurements", of which many points overlap with this collection [^PAM17]
-- Important insights for scanning, ethical and operational guidelines [^zmap]
-- Standard works in ethical guidelines for Internet scanning/Computer science [^menlo][^paxson][^allman][^allman2]
+- The PAM'17 keynote by Matthew Roughan on the "10 commandments of Internet measurements", of which many points overlap with this collection [1]
+- Important insights for scanning, ethical and operational guidelines [2]
+- Standard works in ethical guidelines for Internet scanning/Computer science [3-6]
 
 
 
@@ -27,7 +27,7 @@ The next few point describe typical caveats with regards to the *engineering*, i
 
 ### Understanding Bias of the Measured Population Sample
 
-Typically, it is only possible to measure a sample of the Internet, largely because the entire Interent is not known. This leads to measuring samples of the Internet, which may be constructed with significant bias[^toplists]. 
+Typically, it is only possible to measure a sample of the Internet, largely because the entire Interent is not known. This leads to measuring samples of the Internet, which may be constructed with significant bias [7].
 
 It is important to thoughtfully consider this bias, think of ways to control it, or at least acknowledge that it exists and of what nature it likely is. 
 
@@ -74,7 +74,7 @@ We have observed multiple measurement campaigns, in parts running for over a yea
 There are three very effective means to avoid such a situation:
 
 1. **Automatic Processing:** After each measurement run, results should be automatically processed, and  2-3 key metrics should be sent to **one** person in charge. These e-mails must be brief, clutterless, and permit to assess beforementioned 2-3 metrics within 1 second (ideally from the preview window). After 1-2 weeks, these key metrics should be known to the person in charge by heart and comparison come effortless. At all costs, it should be avoided to receive exhaustivingly long e-mails, or sort these e-mails automatically into a subfolder. Both **will** lead to not reading those e-mails. Metrics could be, e.g., the number of successfully scanned TLS hosts for TLS scans, or the number of domains returning A/AAAA records for DNS scans.
-2. **Error Case Monitoring:** Specific error cases should be very specifically warched. These error cases could, e.g., be "too many open files" when hitting `ulimit` [^ulimit] or "address already in use", when running out of sockets. Post-processing of scans should assert the absence of any such errors.
+2. **Error Case Monitoring:** Specific error cases should be very specifically warched. These error cases could, e.g., be "too many open files" when hitting `ulimit` [8] or "address already in use", when running out of sockets. Post-processing of scans should assert the absence of any such errors.
 3. **Dashboard:** An ongoing graphical representation of measurement results can amend monitoring. This can, for example, be a website with live charts that are frequently being updated. Dashboard make any dramatic malfunction quickly obvious, but do not permit to see more subtle errors (such as a few "too many open files"), hence they should not be fully relied on. 
 
 ## Analysis
@@ -129,11 +129,18 @@ https://http2.netray.io/stats.html
 
 # References
 
-[^PAM17]: The 10 Commandments of Internet Measurement, [Passive and Active Measurements Keynote](https://research.csiro.au/pam2017/), Sydney, Australia, March 20th, 2017 [PDF](http://www.maths.adelaide.edu.au/matthew.roughan/talks/pam_2017.pdf)
-[^zmap]: Durumeric, Zakir, Eric Wustrow, and J. Alex Halderman. "ZMap: Fast Internet-wide Scanning and Its Security Applications." *USENIX Security Symposium*, 2013.
-[^menlo]:  Bailey, M., Dittrich, D., Kenneally, E., & Maughan, D. "The Menlo Report." *IEEE Security & Privacy* , 2012
-[^paxson]: Vern Paxson. Strategies for Sound Internet Measurement. IMC 2004
-[^allman]: Mark Allman. On Changing the Culture of Empirical Internet Assessment. ACM SIGCOMM CCR, 2013
-[^allman2]: Mark Allman, Robert Beverly, and Brian Trammell. Principles for measurability in protocol design. ACM SIGCOMM CCR, 2017
-[^toplists]: Scheitle, Quirin, et al. "A Long Way to the Top: Significance, Structure, and Stability of Internet Top Lists." *arXiv preprint arXiv:1805.11506* (2018).
-[^ulimit]: Even better, have your measurement script that ulimit is set sufficiently high before starting the measurements.
+[1] The 10 Commandments of Internet Measurement, [Passive and Active Measurements Keynote](https://research.csiro.au/pam2017/), Sydney, Australia, March 20th, 2017 [PDF](http://www.maths.adelaide.edu.au/matthew.roughan/talks/pam_2017.pdf)
+
+[2] Durumeric, Zakir, Eric Wustrow, and J. Alex Halderman. "ZMap: Fast Internet-wide Scanning and Its Security Applications." *USENIX Security Symposium*, 2013.
+
+[3] Bailey, M., Dittrich, D., Kenneally, E., & Maughan, D. "The Menlo Report." *IEEE Security & Privacy* , 2012
+
+[4] Vern Paxson. Strategies for Sound Internet Measurement. IMC 2004
+
+[5] Mark Allman. On Changing the Culture of Empirical Internet Assessment. ACM SIGCOMM CCR, 2013
+
+[6] Mark Allman, Robert Beverly, and Brian Trammell. Principles for measurability in protocol design. ACM SIGCOMM CCR, 2017
+
+[7] Scheitle, Quirin, et al. "A Long Way to the Top: Significance, Structure, and Stability of Internet Top Lists." *arXiv preprint arXiv:1805.11506* (2018).
+
+[8] Even better, have your measurement script assert that ulimit is set sufficiently high before starting the measurements.
