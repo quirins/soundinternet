@@ -124,33 +124,3 @@ Already processed results will simply be skipped.
 We have good experience in extracting key metrics from raw data and storing them to both in long format (e.g., the list of domains that have certain properties) and in short format (e.g., the count of domains that have certain properties) as JSON files. 
 
 Using highcharts on github, automatied deployment of updated JSON files can provide a stable hosting environment outside the university. 
-
-
-
-engineering good internet messurements
-
-\- make them longitudinal (for repeatability)
-
-\- make them robust (use yesterdays file)
-
-\- dont drop domains, always include yesterdays data
-
-\- compress right from the beginning
-
-\- use expressive, UTC naming
-
-\- make consumption of 2-3 data points per scan a habit (in addition or instead of monitoring)
-
-\- pull blacklist and measurement code from git
-
-\- store your inputs
-
-\- watch typical error cases and set boundaries (too many open files / name resolution error / scan not finished in time)
-
-Live website:
-
-​	* do measurements every day
-
-​	* evaluate measurements every day, store results in JSON, cache if raw file processed
-
-​	* convert JSONs to highcharts json
