@@ -2,6 +2,8 @@
 
 This document aims to provide a go-to collection of best practices, tips and tricks, DO's and DONT's for anyone engaging in Internet measurement. Some of this may seem obvious to people experienced in Internet measurements, but other people have repeatedly asked for advice such as this. 
 
+Comments, changes, and additions very welcome! 
+
 There is a body of highly recommended related work: 
 
 - The PAM'17 keynote by Matthew Roughan on the "10 commandments of Internet measurements", of which many points overlap with this collection [1]
@@ -81,7 +83,7 @@ There are three very effective means to avoid such a situation:
 
 The following points aim to give hints on how to run sound analysis on Internet measurements. 
 
-### Raw data is sacrosanct (cf. Matthew Roughan[^pam17])
+### Raw data is sacrosanct (cf. Matthew Roughan [1])
 
 All your analysis must be anchored into the raw data produced by scanning tools. That raw data must never be altered, no columns dropped, no rows removed. 
 
@@ -107,7 +109,7 @@ This can be used to build a meticulously documented, yet very efficient end-to-e
 
 For a checksum, a cryptographic checksum such as SHA512 is desirable, but in practice the precise file size in bytes is typically also a strong indicator that the file has not been overwritten by new measurements, truncated, or other accidental major changes have happened.
 
-### Setting up a Dasboard
+### Setting up a Dashboard
 
 When running measurements every day, the pipeline mentioned above can be used to process all results, as already processed results will simply be skipped. 
 
